@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class userlogin {
+    public static void main(String[] args) {
+
+        /**
+         * This GPA calculator was created by @uygarkaan.
+         * You can find more projects and tutorials at https://github.com/uygarkaan
+         */
+        
+        Scanner scanner = new Scanner(System.in);
+
+        // Variables to store the username and password
+        String userName, password, resetChoice, newPassword;
+
+        // Get the username from the user
+        System.out.print("Enter your username: ");
+        userName = scanner.nextLine();
+
+        // Get the password from the user
+        System.out.print("Enter your password: ");
+        password = scanner.nextLine();
+
+        // Check if the username and password are correct
+        if (userName.equals("admin") && (password.equals("123"))) {
+            System.out.print("Login Successful.");
+        } else {
+            System.out.print("Login Failed.");
+
+            // Ask the user if they want to reset their password
+            System.out.print("Would you like to reset your password? (yes/no): ");
+            resetChoice = scanner.nextLine();
+
+            // If the user says 'yes', prompt them to enter a new password
+            if (resetChoice.equalsIgnoreCase("yes")) {
+                System.out.println("Enter your new password: ");
+                newPassword = scanner.nextLine();
+
+                // The new password should not be the same as the old password
+                if (newPassword.equals("123")) {
+                    System.out.println("New password cannot be the same as the old password.");
+                } else {
+                    password = newPassword; // Update the password to the new one
+                    System.out.println("Your password has been successfully reset.");
+                }
+            } else {
+                System.out.println("Password reset operation canceled.");
+            }
+        }
+
+        scanner.close(); // Close the scanner
+    }
+}
